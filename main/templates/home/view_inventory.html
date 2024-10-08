@@ -1,0 +1,73 @@
+{%extends 'base.html'%}
+{%block title%}New Patient{%endblock%}
+{%block body%}
+<style>
+  .time-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 20%;
+  }
+  .btn-edit{
+        border: none;
+        color: white;
+        background-color: rgb(10, 91, 230);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn-delete{
+        background-color: rgb(252, 4, 4);
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+    .text-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 10%;
+  }
+    .btn-primary{
+        width: 30%;
+        height: 30pt;
+        margin-left: 20%
+  }
+  table{
+    border: 0.5px solid;
+    width: 90%;
+    border-color: black;
+    border-collapse: collapse;
+  }
+  th,td{
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+
+</style>
+<form action="{%url 'search_inventory'%}" method="post">
+{%csrf_token%}
+<input type="text" placeholder="search.." name="search_inventory" list="doctors" class="text-input"><br><br>
+<datalist id="doctors">
+    {%for doctor in drugs%}
+    <option value="{{doctor.name}}"></option>
+    {%endfor%}
+</datalist>
+<input type="submit" class="btn-primary"><br><br>
+</form>
+<table>
+    <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>AMOUNT</th>
+    </thead>
+    <tbody>
+        {%for doctor in drugs%}
+        <tr>
+            <td>{{doctor.id}}</td>
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.amount}}</td>
+            <td><a href="{%url 'edit_inventory' doctor.id%}"><button class="btn-edit">Edit</button></a><a href="{%url 'remove_inventory' doctor.id%}"><button class="btn-delete">Delete</button></a></td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{%endblock%}

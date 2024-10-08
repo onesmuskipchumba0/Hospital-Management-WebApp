@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%block title%}New Patient{%endblock%}
+{%block body%}
+<style>
+    .text-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 20%;
+  }
+    .btn-primary{
+        width: 30%;
+        height: 30pt;
+        margin-left: 20%
+  }
+</style>
+<form action="{%url 'new_patient'%}" id="new_patient" method="post">
+  {%csrf_token%}
+<input type="text" name="fullname" id="fullname" class = 'text-input' placeholder="Full name"><br><br>
+<input type="email" name="email" id="email" class = 'text-input' placeholder="Email Address"><br><br>
+<input type="text" name="disease" id="disease" class = 'text-input' placeholder="Suffering From"><br><br>
+<input type="text" name="location" id="location" class = 'text-input' placeholder="Location"><br><br>
+<input type="text" name="contact" id="contact" class = 'text-input' placeholder="Contacts"><br><br>
+<input type="submit" name="submit" id="submit" class = 'btn-primary' value="Submit"><br><br>
+
+<a href="#" style="margin-left: 20%;">Back Home</a>
+<a href="#" style="margin-left: 20%;">View Patients</a>
+</form>
+<select name="doctor" id="doctor">
+  <option value="doctor_value">{{doctors.id}}</option>
+</select>
+{%if error%}
+  <script>
+  alert('{{error}}');
+  </script>
+{%endif%}
+{%endblock%}

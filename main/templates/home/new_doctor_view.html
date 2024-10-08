@@ -1,0 +1,39 @@
+{%extends 'base.html'%}
+{%block title%}New Patient{%endblock%}
+{%block body%}
+<style>
+     .time-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 20%;
+  }
+    .text-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 20%;
+  }
+    .btn-primary{
+        width: 30%;
+        height: 30pt;
+        margin-left: 20%
+  }
+</style>
+<form action="{%url 'new_doctor'%}" id="new_doctor" method="post">
+    {%csrf_token%}
+    <input type="text" name="fullname" id="fullname" class = 'text-input' placeholder="Full name"><br><br>
+    <input type="email" name="email" id="email" class = 'text-input' placeholder="Email Address"><br><br>
+    <input type="text" name="specialty" id="specialty" class = 'text-input' placeholder="Specialises In"><br><br>
+    <input type="time" name="time_start_work" id="time" class = 'time-input'> Work Start Time<br><br>
+    <input type="time" name="time_end_work" id="time" class = 'time-input'> Work End Time<br><br>
+    <input type="text" name="contact" id="contact" class = 'text-input' placeholder="Contacts"><br><br>
+    <input type="submit" name="submit" id="submit" class = 'btn-primary' value="Submit"><br><br>
+
+    <a href="#" style="margin-left: 20%;">Back Home</a>
+    <a href="#" style="margin-left: 20%;">View Patients</a>
+</form>
+{%if error%}
+  <script>
+    alert('{{error}}');
+  </script>
+{%endif%}
+{%endblock%}

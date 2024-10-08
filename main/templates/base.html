@@ -1,0 +1,61 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'styles.css'%}">
+    
+</head>
+<body>
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex align-items-center justify-content-between">
+    
+          <h1 class="logo"><a href="{%url 'index'%}">Hospital Management<span>.</span></a></h1>
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt=""></a>-->
+    
+          <nav id="navbar" class="navbar">
+            <ul>
+              <li><a class="nav-link scrollto active" href="{%url 'index'%}">Home</a></li>
+              <li class="dropdown"><a href="#"><span>Patients</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{%url 'new_patient_view'%}">New Patients</a></li>                  </li>
+                  <li><a href="{%url 'view_patients'%}">Edit Patients</a></li>
+                  <li><a href="{%url 'view_patients'%}">Delete Patients</a></li>
+                  <li><a href="{%url 'view_patients'%}">View patients</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Doctors</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  <li><a href="{%url 'available_doctors'%}">Available Doctors</a></li>
+                  <li><a href="{%url 'new_doctor_view'%}">New Doctor</a></li>
+                  <li><a href="{%url 'view_doctors'%}">Edit Doctors</a></li>
+                  <li><a href="{%url 'view_doctors'%}">Remove Doctors</a></li>
+                  <li><a href="{%url 'view_doctors'%}">View Doctors</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="#"><span>Pharmacy</span> <i class="bi bi-chevron-down"></i></a>
+                <ul>
+                  </li>
+                  <li><a href="{%url 'view_inventory'%}">View Inventory</a></li>
+                  <li><a href="{%url 'view_inventory'%}">Edit Inventory</a></li>
+                  <li><a href="{%url 'view_inventory'%}">Remove Drugs</a></li>
+                </ul>
+              </li>
+              <li><a class="nav-link scrollto" href="https://onesmusbett.wordpress.com/about">About</a></li>
+              <li><a class="nav-link scrollto" href="https://onesmusbett.wordpress.com/">Help</a></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          </nav><!-- .navbar -->
+    
+        </div>
+      </header><!-- End Header -->
+    {%block body%}
+    {%endblock%}
+    
+    
+    
+</body>
+</html>

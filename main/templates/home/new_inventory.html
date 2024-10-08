@@ -1,0 +1,35 @@
+{%extends 'base.html'%}
+{%block title%}New Patient{%endblock%}
+{%block body%}
+<style>
+     .time-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 20%;
+  }
+    .text-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 20%;
+  }
+    .btn-primary{
+        width: 30%;
+        height: 30pt;
+        margin-left: 20%
+  }
+</style>
+<form action="{%url 'new_inventory_handler'%}" id="new_doctor" method="post">
+    {%csrf_token%}
+    <input type="text" name="name" id="name" class = 'text-input' placeholder="Name of Medicine"><br><br>
+    <input type="number" name="amount" id="text" class = 'text-input' placeholder="Amount"><br><br>
+    <input type="submit" name="submit" id="submit" class = 'btn-primary' value="Submit"><br><br>
+
+    <a href="#" style="margin-left: 20%;">Back Home</a>
+    <a href="#" style="margin-left: 20%;">View Inventory</a>
+</form>
+{%if error%}
+  <script>
+    alert('{{error}}');
+  </script>
+{%endif%}
+{%endblock%}

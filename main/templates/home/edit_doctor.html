@@ -1,0 +1,66 @@
+{%extends 'base.html'%}
+{%block title%}New Patient{%endblock%}
+{%block body%}
+<style>
+    .time-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 10%;
+  }
+    .btn-edit{
+        border: none;
+        color: white;
+        background-color: rgb(10, 91, 230);
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .btn-delete{
+        background-color: rgb(252, 4, 4);
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+    }
+    .text-input{
+    width: 50%;
+    height: 40pt;
+    margin-left: 10%;
+  }
+    .btn-primary{
+        width: 30%;
+        height: 30pt;
+        margin-left: 20%
+  }
+  table{
+    border: 0.5px solid;
+    width: 90%;
+    border-color: black;
+    border-collapse: collapse;
+  }
+  th,td{
+    border: 1px solid;
+    border-collapse: collapse;
+  }
+
+</style>
+</style>
+<form action="{%url 'edit_doctor_logic' doctor.id%}" id="new_patient" method="post">
+  {%csrf_token%}
+  <input type="text" name="fullname" id="fullname" class = 'text-input' placeholder="Full name"><br><br>
+  <input type="email" name="email" id="email" class = 'text-input' placeholder="Email Address"><br><br>
+  <input type="text" name="specialty" id="specialty" class = 'text-input' placeholder="Specialises In"><br><br>
+  <input type="time" name="time_start_work" id="time" class = 'time-input'> Work Start Time<br><br>
+  <input type="time" name="time_end_work" id="time" class = 'time-input'> Work End Time<br><br>
+  <input type="text" name="contact" id="contact" class = 'text-input' placeholder="Contacts"><br><br>
+  <input type="submit" name="submit" id="submit" class = 'btn-primary' value="Submit"><br><br>
+
+  <a href="#" style="margin-left: 20%;">Back Home</a>
+  <a href="#" style="margin-left: 20%;">View Patients</a>
+</form>
+
+{%if error%}
+  <script>
+  alert('{{error}}');
+  </script>
+{%endif%}
+{%endblock%}
